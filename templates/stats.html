@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Petrolog Dyna</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/mainpage.css') }}">
+    <link rel="stylesheet" media="screen" href="static/bootstrap.min.css">
+    <link rel="stylesheet" href="static/bootstrap-theme.min.css">
+</head>
+<body>
+
+
+<!--Plot container-->
+<div id="container" style="min-width: 310px; height: 400px; max-width: 700px; margin: 0 auto"></div>
+
+
+<div id="status_container">
+    <h3> Stats </h3>
+
+    <form id=status_form" class="status-refresh-form" role="form">
+
+        <button class="btn btn-lg btn-primary btn-block" type="button" id="refresh_stats">Refresh</button>
+
+    </form>
+    <div id="status">
+        <ul>
+            <li>Well Status: {{status.well_status}}</li>
+            <li>Automatic: {{status.automatic}}</li>
+            <li>Percent Fillage: {{status.percent_fillage}}%</li>
+            <li>Run Time: {{status.run_time}}%</li>
+            <li>Strokes this Cycle: {{status.strokes_this}}</li>
+            <li>Strokes last cycle: {{status.strokes_last}}</li>
+        </ul>
+    </div>
+
+</div>
+
+<div id="settings_container">
+    <h3>Settings</h3>
+
+    <form id="settings_form" action="" method="post" role="form">
+        <div class="form-group">
+            <label for="pump_off_strokes">Pump off Strokes:</label>
+            <input type="number" class="form-control" id="pump_off_strokes" name="pump_off_strokes"
+                   value={{settings.pump_off_strokes}}>
+            <br>
+            <label for="pump_up_strokes">Pump up Strokes:</label>
+            <input type="number" class="form-control" id="pump_up_strokes" name="pump_up_strokes"
+                   value={{settings.pump_up_strokes}}>
+            <br>
+            <label for="clock_date">Clock Date:</label>
+            <input type="date" class="form-control" id="clock_date" name="clock_date"
+                   value={{settings.clock_date}}>
+            <label for="clock_time">Clock Time:</label>
+            <input type="time" class="form-control" id="clock_time" name="clock_time"
+                   value={{settings.clock_time}}>
+            <br>
+            <label for="fillage_setting">Fillage Setting:</label>
+            <input type="number" class="form-control" id="fillage_setting" name="fillage_setting"
+                   value={{settings.fillage_setting}}>
+            <br>
+            <label for="time_out">Time Out:</label>
+            <input type="time" class="form-control" id="time_out" name="time_out"
+                   value={{settings.time_out}}>
+        </div>
+    </form>
+    <button class="btn btn-lg btn-primary" type="button" id="update_settings">Update Settings</button>
+</div>
+<!--script libraries-->
+<script src="static/js/jquery-3.3.1.min.js"></script>
+<script src="static/js/highcharts.js"></script>
+<script src="static/js/highcharts-more.js"></script>
+
+<!--local scripts -->
+<script src="static/js/dynachart.js"></script>
+<script src="static/js/script.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="static/js/bootstrap.min.js"></script>
+</body>
+</html>
