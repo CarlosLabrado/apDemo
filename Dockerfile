@@ -18,7 +18,6 @@ RUN pip install -U \
  zerorpc
 
 COPY dnsmasq.conf /etc/dnsmasq.conf
-COPY sysctl.conf /etc/sysctl.conf
 
 # Defines our working directory in container
 WORKDIR /usr/src/app
