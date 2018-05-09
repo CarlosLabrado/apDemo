@@ -2,6 +2,11 @@ FROM resin/raspberry-pi-python:3.4
 
 ENV INITSYSTEM on
 
+
+RUN apt-get update && apt-get install -y \
+		dnsmasq \
+&& rm -rf /var/lib/apt/lists/*
+
 # Install required Python packages
 RUN pip install --upgrade pip
 
@@ -11,6 +16,8 @@ RUN pip install -U \
  Flask-WTF \
  python-networkmanager \
  zerorpc
+
+COPY dnsmasq.conf /etc/dnsmasq.conf
 
 # Defines our working directory in container
 WORKDIR /usr/src/app
